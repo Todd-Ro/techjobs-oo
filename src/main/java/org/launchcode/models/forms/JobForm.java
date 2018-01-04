@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Created by LaunchCode
  */
 public class JobForm {
+    //This class is used by the JobController at the job/add route
 
     @NotNull
     @Size(min=1, message = "Name may not be empty")
@@ -21,6 +22,15 @@ public class JobForm {
 
     @NotNull
     private int employerId;
+
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int coreCompetencyId;
+
+    @NotNull
+    private int positionTypeId;
 
     /*
         TODO #3 - Included other fields needed to create a job,
@@ -33,15 +43,26 @@ public class JobForm {
     private ArrayList<CoreCompetency> coreCompetencies;
     private ArrayList<PositionType> positionTypes;
 
+    public JobData getJobData() {
+        return jobData;
+    }
+
+    private JobData jobData;
+
     public JobForm() {
 
-        JobData jobData = JobData.getInstance();
+        jobData = JobData.getInstance();
 
         /*
             TODO #4 - populate the other ArrayList collections needed in the view
         */
+        // These ArrayLists are used by new-job.html, which corresponds to the JobController's job/add route
 
-        employers = jobData.getEmployers().findAll();
+        employers = jobData.getEmployers().findAll(); // jobData.getEmployers returns a JobFieldData, which ...
+                // has an ArrayList of Employers. The findAll() method returns this ArrayList.
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
 
     }
 
@@ -59,6 +80,30 @@ public class JobForm {
 
     public void setEmployerId(int employerId) {
         this.employerId = employerId;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public int getCoreCompetencyId() {
+        return coreCompetencyId;
+    }
+
+    public void setCoreCompetencyId(int coreCompetencyId) {
+        this.coreCompetencyId = coreCompetencyId;
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
     }
 
     public ArrayList<Employer> getEmployers() {

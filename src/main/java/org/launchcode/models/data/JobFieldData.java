@@ -9,6 +9,12 @@ import java.util.ArrayList;
  * Created by LaunchCode
  */
 public class JobFieldData<T extends JobField> {
+    //Each Job is assigned one instance of each subclass of JobField in forms (such as Employer) representing the ...
+            // ... one that is applicable to that job, which may be the same one that is assigned to another job.
+    //However, our JobData instance is assigned one instance of this class for each field type.
+    //This class is assigned a T for one of the classes that extends JobField.
+    //This class has an ArrayList of  its particular subclass of JobField.
+            // This ArrayList can contain, for example, all Employers.
 
     private ArrayList<T> allFields = new ArrayList<>();
 

@@ -39,6 +39,8 @@ public class SearchController {
         }
 
         model.addAttribute("jobs", jobs);
+        // search.html can access (at this mapping) a model attribute passed to it here, called jobs,  which is an ...
+                // ArrayList of Jobs returned from the findByValue (or findByColumnAndValue) function
 
         return "search";
     }

@@ -11,7 +11,10 @@ public class SearchForm {
     private JobFieldType[] fields = JobFieldType.values();
 
     // The selected search options
-    private JobFieldType searchField = JobFieldType.ALL;
+    private JobFieldType searchField = JobFieldType.ALL; //ALL is the default value
+    // search.html has Thymeleaf call the setter methods to set the searchField and keyword ...
+            // ... based on form inputs/selections.
+    // The SearchController adds SearchForm searchForm as a model attribute for the search/results route
 
     // The search string
     private String keyword;
